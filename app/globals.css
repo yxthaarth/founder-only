@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  background: #09090b;
+}
+
+body {
+  min-height: 100vh;
+  background: #09090b;
+  color: #fafafa;
+}
+
+* {
+  border-color: #27272a;
+}
+
+::selection {
+  background: rgba(255, 255, 255, 0.14);
+  color: #fafafa;
+}
+
+.app-shell {
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.03), transparent 25%),
+    #09090b;
+}
+
+.surface {
+  background: #18181b;
+  border: 1px solid #27272a;
+}
+
+.surface-muted {
+  background: rgba(24, 24, 27, 0.66);
+  border: 1px solid #27272a;
+}
+
+.thin-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #3f3f46 transparent;
+}
+
+.thin-scrollbar::-webkit-scrollbar {
+  width: 10px;
+}
+
+.thin-scrollbar::-webkit-scrollbar-thumb {
+  background: #3f3f46;
+  border-radius: 9999px;
+}
