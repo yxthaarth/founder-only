@@ -1,12 +1,12 @@
-import { LobbyHub } from "@/components/lobby-hub";
+import { DmSurface } from "@/components/dm-surface";
 import { Topbar } from "@/components/topbar";
 import { PageTransition } from "@/components/ui";
 
-export default function LobbyPage() {
+export default function DmsPage() {
   return (
     <PageTransition>
-      <Topbar title="Lobby" />
-      <LobbyHub />
+      <Topbar title="Private DMs" />
+      <DmSurface />
     </PageTransition>
   );
 }

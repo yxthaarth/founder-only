@@ -8,18 +8,17 @@ export function NotificationsPanel() {
   const notifications = state.notifications.filter((item) => item.userId === currentUser.id && !item.read);
 
   if (notifications.length === 0) {
-    return (
-      <Panel className="p-4">
-        <p className="text-sm text-zinc-500">No active notifications.</p>
-      </Panel>
-    );
+    return null;
   }
 
   return (
     <Panel className="p-4">
       <div className="space-y-4">
+        <div>
+          <h3 className="text-sm font-medium text-white">Notifications</h3>
+        </div>
         {notifications.map((notification) => (
-          <div key={notification.id} className="space-y-3 border-b border-line pb-4 last:border-b-0 last:pb-0">
+          <div key={notification.id} className="space-y-3 border-t border-line pt-4 first:border-t-0 first:pt-0">
             <p className="text-sm text-white">{notification.message}</p>
             {notification.type === "connection_request" && notification.requestId ? (
               <div className="flex gap-2">
@@ -30,9 +29,6 @@ export function NotificationsPanel() {
                   Ignore
                 </Button>
               </div>
-            ) : null}
-            {notification.type === "submission_rejected" ? (
-              <p className="text-xs text-zinc-500">Queue update received.</p>
             ) : null}
           </div>
         ))}

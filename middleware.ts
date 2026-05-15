@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import { ONBOARDING_PATH } from "@/lib/constants";
+import { LOGIN_PATH, ONBOARDING_PATH } from "@/lib/constants";
 
-const PUBLIC_PATHS = [ONBOARDING_PATH, "/_next", "/favicon.ico"];
+const PUBLIC_PATHS = [LOGIN_PATH, ONBOARDING_PATH, "/auth/callback", "/_next", "/favicon.ico"];
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -10,7 +10,14 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
+  const authenticated = request.cookies.get("fo_auth")?.value;
   const onboardingStatus = request.cookies.get("fo_onboarding_status")?.value;
+
+  if (authenticated !== "1") {
+    const url = request.nextUrl.clone();
+    url.pathname = LOGIN_PATH;
+    return NextResponse.redirect(url);
+  }
 
   if (onboardingStatus !== "complete") {
     const url = request.nextUrl.clone();

@@ -5,11 +5,7 @@ import { cn } from "@/lib/utils";
 
 export function PageTransition({ children }: { children: React.ReactNode }) {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.2, ease: "easeOut" }}
-    >
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.2, ease: "easeOut" }}>
       {children}
     </motion.div>
   );
@@ -22,7 +18,7 @@ export function Panel({
   className?: string;
   children: React.ReactNode;
 }) {
-  return <div className={cn("surface rounded-lg", className)}>{children}</div>;
+  return <div className={cn("surface rounded-2xl", className)}>{children}</div>;
 }
 
 export function Button({
@@ -44,7 +40,7 @@ export function Button({
     <button
       {...props}
       className={cn(
-        "inline-flex items-center justify-center rounded-[4px] px-3 py-2 text-sm font-medium transition disabled:cursor-not-allowed disabled:opacity-50",
+        "inline-flex items-center justify-center rounded-lg px-3 py-2 text-sm font-medium transition disabled:cursor-not-allowed disabled:opacity-50",
         styles[variant],
         className
       )}
@@ -59,7 +55,7 @@ export function Input(props: React.InputHTMLAttributes<HTMLInputElement>) {
     <input
       {...props}
       className={cn(
-        "h-10 w-full rounded-[4px] border border-line bg-zinc-950 px-3 text-sm text-white outline-none placeholder:text-zinc-500 focus:border-zinc-500",
+        "h-11 w-full rounded-xl border border-line bg-zinc-950 px-3 text-sm text-white outline-none placeholder:text-zinc-500 focus:border-zinc-500",
         props.className
       )}
     />
@@ -71,7 +67,7 @@ export function Textarea(props: React.TextareaHTMLAttributes<HTMLTextAreaElement
     <textarea
       {...props}
       className={cn(
-        "w-full rounded-[4px] border border-line bg-zinc-950 px-3 py-2 text-sm text-white outline-none placeholder:text-zinc-500 focus:border-zinc-500",
+        "w-full rounded-xl border border-line bg-zinc-950 px-3 py-2 text-sm text-white outline-none placeholder:text-zinc-500 focus:border-zinc-500",
         props.className
       )}
     />
@@ -112,7 +108,7 @@ export function Modal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4">
-      <div className="surface w-full max-w-lg rounded-lg">
+      <div className="surface w-full max-w-2xl rounded-2xl">
         <div className="flex items-center justify-between border-b border-line px-5 py-4">
           <h3 className="text-sm font-medium text-white">{title}</h3>
           <button onClick={onClose} className="text-sm text-zinc-500 transition hover:text-white">
